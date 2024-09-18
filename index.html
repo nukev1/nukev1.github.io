@@ -3,69 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Nukev1's personal website">
-    <title>Welcome to Nukev1's Universe</title>
+    <meta name="description" content="Nukev1's Website - Play the Game">
+    <title>Click the Box - Mini Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #0e101c;
-            color: #fff;
+            font-family: 'Arial', sans-serif;
+            background-color: #20232a;
+            color: white;
+            text-align: center;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        header {
-            background-color: #1f2833;
-            padding: 20px;
-            border-bottom: 4px solid #66fcf1;
-        }
-        header h1 {
-            margin: 0;
-            color: #66fcf1;
-        }
-        .intro {
-            padding: 40px;
-        }
-        .intro h2 {
-            font-size: 2.5em;
+
+        h1 {
+            color: #61dafb;
             margin-bottom: 20px;
-            color: #45a29e;
         }
-        .intro p {
-            font-size: 1.2em;
-            color: #c5c6c7;
+
+        .game-container {
+            position: relative;
+            width: 80vw;
+            height: 60vh;
+            background-color: #282c34;
+            border: 4px solid #61dafb;
+            overflow: hidden;
+            margin-bottom: 20px;
         }
-        footer {
-            background-color: #1f2833;
-            padding: 10px;
+
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: #61dafb;
             position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #box:hover {
+            background-color: #21a1f1;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
             width: 100%;
-            bottom: 0;
+            margin-bottom: 20px;
         }
-        footer p {
-            margin: 0;
-            color: #66fcf1;
+
+        .scoreboard div {
+            font-size: 1.5em;
+            margin: 0 15px;
         }
-        a {
-            color: #66fcf1;
-            text-decoration: none;
+
+        button {
+            background-color: #61dafb;
+            color: #20232a;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
         }
-        a:hover {
-            text-decoration: underline;
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        footer {
+            margin-top: 20px;
+            color: #61dafb;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Nukev1's Universe</h1>
-    </header>
-    <section class="intro">
-        <h2>Hello, World!</h2>
-        <p>This is my personal space on the web where I explore technology, coding, and creativity. Stay tuned for updates!</p>
-        <p>Check out my projects on <a href="https://github.com/nukev1" target="_blank">GitHub</a>.</p>
-    </section>
+
+    <h1>Click the Box Game</h1>
+
+    <div class="game-container" id="game-container">
+        <div id="box"></div>
+    </div>
+
+    <div class="scoreboard">
+        <div>Score: <span id="score">0</span></div>
+        <div>Time Left: <span id="time">30</span> seconds</div>
+    </div>
+
+    <button id="start-btn">Start Game</button>
+
     <footer>
         <p>Made with 💻 by Nukev1</p>
     </footer>
+
+    <script>
+        let score = 0;
+        let timeLeft = 30;
+        let gameInterval;
+        let box = document.getElementById('box');
+        let gameContainer = document.getElementById('game-container');
+        let scoreDisplay = document.getElementById('score');
+        let timeDisplay = document.getElementById('time');
+        let startButton = document.getElementById('start-btn');
+
+        function randomPosition() {
+            const containerRect = gameContainer.getBoundingClientRect();
+            const boxSize = box.getBoundingClientRect().width;
+
+            const maxX = containerRect.width - boxSize;
+            const maxY = containerRect.height - boxSize;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            box.style.left = `${randomX}px`;
+            box.style.top = `${randomY}px`;
+        }
+
+        function updateScore() {
+            score++;
+            scoreDisplay.innerText = score;
+        }
+
+        function countdown() {
+            timeLeft--;
+            timeDisplay.innerText = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(gameInterval);
+                box.removeEventListener('click', updateScore);
+                startButton.disabled = false;
+                startButton.innerText = 'Restart Game';
+                alert(`Time's up! Your final score is: ${score}`);
+            }
+        }
+
+        function startGame() {
+            score = 0;
+            timeLeft = 30;
+            scoreDisplay.innerText = score;
+            timeDisplay.innerText = timeLeft;
+            startButton.disabled = true;
+            startButton.innerText = 'Game in Progress';
+
+            box.addEventListener('click', updateScore);
+            gameInterval = setInterval(() => {
+                randomPosition();
+                countdown();
+            }, 1000);
+        }
+
+        startButton.addEventListener('click', startGame);
+    </script>
+
 </body>
 </html>
