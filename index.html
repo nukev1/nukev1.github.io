@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nukev1's Bubbly Website - Play the Game">
-    <title>Bubbly Click Game</title>
+    <title>Click the Bubbly Box Game</title>
     <style>
+        /* General body styling */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
@@ -18,8 +19,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
+        /* Bubbly heading style */
         h1 {
             color: #ff6347;
             font-size: 4em;
@@ -29,6 +32,7 @@
             animation: bubble 2s infinite;
         }
 
+        /* Bouncing animation for the heading */
         @keyframes bubble {
             0%, 100% {
                 transform: translateY(0);
@@ -38,6 +42,7 @@
             }
         }
 
+        /* Game container styling */
         .game-container {
             position: relative;
             width: 80vw;
@@ -50,23 +55,26 @@
             overflow: hidden;
         }
 
+        /* Styling for the clickable box */
         #box {
             width: 70px;
             height: 70px;
-            background: url('https://image.shutterstock.com/image-vector/cute-cartoon-character-smiling-face-260nw-1718396511.jpg');
-            background-size: cover;
+            background-color: #ffbb00;
             border-radius: 50%;
             position: absolute;
             top: 0;
             left: 0;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
+        /* Hover effect for the box */
         #box:hover {
             transform: scale(1.2);
+            background-color: #ff6347;
         }
 
+        /* Scoreboard styling */
         .scoreboard {
             display: flex;
             justify-content: space-around;
@@ -83,6 +91,7 @@
             color: #ff6347;
         }
 
+        /* Button styling */
         button {
             background-color: #ff6347;
             color: white;
@@ -95,11 +104,13 @@
             transition: background-color 0.3s, transform 0.3s;
         }
 
+        /* Button hover effect */
         button:hover {
             background-color: #ffbb00;
             transform: scale(1.05);
         }
 
+        /* Footer styling */
         footer {
             margin-top: 20px;
             color: white;
@@ -142,6 +153,7 @@
         let timeDisplay = document.getElementById('time');
         let startButton = document.getElementById('start-btn');
 
+        // Function to set random position of the box inside the container
         function randomPosition() {
             const containerRect = gameContainer.getBoundingClientRect();
             const boxSize = box.getBoundingClientRect().width;
@@ -156,11 +168,13 @@
             box.style.top = `${randomY}px`;
         }
 
+        // Function to update the score
         function updateScore() {
             score++;
             scoreDisplay.innerText = score;
         }
 
+        // Function to handle countdown timer
         function countdown() {
             timeLeft--;
             timeDisplay.innerText = timeLeft;
@@ -174,6 +188,7 @@
             }
         }
 
+        // Function to start the game
         function startGame() {
             score = 0;
             timeLeft = 30;
@@ -189,8 +204,10 @@
             }, 1000);
         }
 
+        // Add event listener to start button
         startButton.addEventListener('click', startGame);
     </script>
 
 </body>
 </html>
+
