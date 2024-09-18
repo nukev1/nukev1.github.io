@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nukev1's Website - Play the Game">
-    <title>Click the Box - Mini Game</title>
+    <meta name="description" content="Nukev1's Bubbly Website - Play the Game">
+    <title>Bubbly Click Game</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #20232a;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
             color: white;
             text-align: center;
             margin: 0;
@@ -21,33 +21,50 @@
         }
 
         h1 {
-            color: #61dafb;
-            margin-bottom: 20px;
+            color: #ff6347;
+            font-size: 4em;
+            font-weight: bold;
+            text-shadow: 3px 3px #ffbb00;
+            margin-bottom: 10px;
+            animation: bubble 2s infinite;
+        }
+
+        @keyframes bubble {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .game-container {
             position: relative;
             width: 80vw;
             height: 60vh;
-            background-color: #282c34;
-            border: 4px solid #61dafb;
-            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+            border: 10px solid #ff6347;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
+            overflow: hidden;
         }
 
         #box {
-            width: 50px;
-            height: 50px;
-            background-color: #61dafb;
+            width: 70px;
+            height: 70px;
+            background: url('https://image.shutterstock.com/image-vector/cute-cartoon-character-smiling-face-260nw-1718396511.jpg');
+            background-size: cover;
+            border-radius: 50%;
             position: absolute;
             top: 0;
             left: 0;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: transform 0.3s;
         }
 
         #box:hover {
-            background-color: #21a1f1;
+            transform: scale(1.2);
         }
 
         .scoreboard {
@@ -55,37 +72,50 @@
             justify-content: space-around;
             width: 100%;
             margin-bottom: 20px;
+            font-size: 2em;
         }
 
         .scoreboard div {
-            font-size: 1.5em;
-            margin: 0 15px;
+            background-color: #ffbb00;
+            padding: 15px 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #ff6347;
         }
 
         button {
-            background-color: #61dafb;
-            color: #20232a;
+            background-color: #ff6347;
+            color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
+            padding: 15px 30px;
+            font-size: 1.5em;
             cursor: pointer;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            border-radius: 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         button:hover {
-            background-color: #21a1f1;
+            background-color: #ffbb00;
+            transform: scale(1.05);
         }
 
         footer {
             margin-top: 20px;
-            color: #61dafb;
+            color: white;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 3px #000;
         }
+
+        footer p {
+            color: #ffbb00;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Click the Box Game</h1>
+    <h1>Bubbly Click Game!</h1>
 
     <div class="game-container" id="game-container">
         <div id="box"></div>
@@ -99,7 +129,7 @@
     <button id="start-btn">Start Game</button>
 
     <footer>
-        <p>Made by Nukev1</p>
+        <p>Made with 🧁 by Nukev1</p>
     </footer>
 
     <script>
