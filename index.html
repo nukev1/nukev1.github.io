@@ -3,233 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nukev1's Bubbly Website - Play the Game">
-    <title>Click the Bubbly Box Game</title>
+    <meta name="description" content="The Hub - PS4 Jailbreaking, ESP8266, Tech Projects">
+    <title>The Hub</title>
     <style>
-        /* General body styling */
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
-            color: white;
-            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
             padding: 0;
+            background-color: #0d1117; /* Dark hacker-style background */
+            color: #39ff14; /* Hacker green text */
+            text-align: center;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #161b22;
+            padding: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #ff8300;
+        }
+
+        header h1 {
+            font-size: 3em;
+            color: #39ff14;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #ff8300; /* Orange text for hacker/technerd contrast */
+        }
+
+        /* Introduction Section */
+        .introduction {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #161b22;
+            border: 2px solid #39ff14;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .introduction h2 {
+            font-size: 2.5em;
+            color: #ff8300;
+            margin-top: 20px;
+        }
+
+        .introduction p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0 20px;
+        }
+
+        /* Profile Section */
+        .profile-section {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            flex-direction: column;
+            margin-top: 30px;
         }
 
-        /* Bubbly heading style */
-        h1 {
-            color: #ff6347;
-            font-size: 4em;
-            font-weight: bold;
-            text-shadow: 3px 3px #ffbb00;
-            margin-bottom: 10px;
-            animation: bubble 2s infinite;
-        }
-
-        /* Bouncing animation for the heading */
-        @keyframes bubble {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Game container styling */
-        .game-container {
-            position: relative;
-            width: 80vw;
-            height: 60vh;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 30px;
-            border: 10px solid #ff6347;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        /* Styling for the clickable box */
-        #box {
-            width: 70px;
-            height: 70px;
-            background-color: #ffbb00;
+        .profile-section img {
+            width: 200px;
             border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        /* Hover effect for the box */
-        #box:hover {
-            transform: scale(1.2);
-            background-color: #ff6347;
-        }
-
-        /* Explosion animation */
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(3);
-                opacity: 0;
-            }
-        }
-
-        /* Scoreboard styling */
-        .scoreboard {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
+            border: 2px solid #39ff14;
             margin-bottom: 20px;
-            font-size: 2em;
         }
 
-        .scoreboard div {
-            background-color: #ffbb00;
-            padding: 15px 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            color: #ff6347;
-        }
-
-        /* Button styling */
-        button {
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            cursor: pointer;
-            border-radius: 30px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        /* Button hover effect */
-        button:hover {
-            background-color: #ffbb00;
-            transform: scale(1.05);
-        }
-
-        /* Footer styling */
-        footer {
+        .profile-section a {
+            display: inline-block;
             margin-top: 20px;
-            color: white;
+            padding: 15px 25px;
+            background-color: #39ff14;
+            color: #0d1117;
+            text-decoration: none;
             font-size: 1.2em;
-            text-shadow: 1px 1px 3px #000;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-section a:hover {
+            background-color: #ff8300;
+            color: #0d1117;
+        }
+
+        /* Tech Section: PS4 Jailbreaking and ESP8266 */
+        .tech-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #161b22;
+            border: 2px solid #ff8300;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .tech-section h2 {
+            font-size: 2.5em;
+            color: #ff8300;
+        }
+
+        .tech-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0 20px;
+        }
+
+        /* Footer Section */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #161b22;
+            color: #ff8300;
         }
 
         footer p {
-            color: #ffbb00;
+            font-size: 1.2em;
+            margin: 0;
         }
-
     </style>
 </head>
 <body>
 
-    <h1>Bubbly Click Game!</h1>
+    <!-- Header Section -->
+    <header>
+        <h1>The Hub</h1>
+        <p>Exploring Technology | PS4 Jailbreaking | ESP8266 Projects</p>
+    </header>
 
-    <div class="game-container" id="game-container">
-        <div id="box"></div>
-    </div>
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <h2>The Explorer's Path</h2>
+        <p>
+            Technology is my playground. Whether it's jailbreaking consoles, diving into embedded systems, or working with custom firmware, this hub is a window into the world of modifications and explorations.
+        </p>
+        <p>
+            I thrive on pushing the boundaries of what technology can do. From experimenting with the **ESP8266** to unlocking hidden features in the **PS4** through jailbreaking tools like **GoldHEN**, this is where innovation meets exploration.
+        </p>
+    </section>
 
-    <div class="scoreboard">
-        <div>Score: <span id="score">0</span></div>
-        <div>Time Left: <span id="time">30</span> seconds</div>
-    </div>
+    <!-- Profile Section (Roblox Contact) -->
+    <section class="profile-section">
+        <img src="https://www.roblox.com/headshot-thumbnail/image?userId=1328087445&width=420&height=420&format=png" alt="Roblox Avatar">
+        <p>Looking to connect? You can find me in the digital world under the alias <strong>Nukev1</strong>.</p>
+        <a href="https://www.roblox.com/users/1328087445/profile" target="_blank">Contact Me on Roblox</a>
+    </section>
 
-    <button id="start-btn">Start Game</button>
+    <!-- Tech Section: PS4 Jailbreaking and ESP8266 -->
+    <section class="tech-section">
+        <h2>PS4 Jailbreaking and Custom Firmware</h2>
+        <p>
+            One of my main areas of expertise is **PS4 jailbreaking** using tools like **GoldHEN**. By identifying vulnerabilities and working with custom firmware, I've unlocked new capabilities on the PS4, allowing for homebrew applications and deeper control over the console.
+        </p>
+        <p>
+            I’ve also integrated the **ESP8266** for delivering payloads to the PS4 wirelessly. This combination of hardware and software has enabled a more seamless jailbreaking experience, cutting out the need for complex setups.
+        </p>
+    </section>
 
+    <!-- Footer Section -->
     <footer>
-        <p>Made with 🧁 by Nukev1</p>
+        <p>Crafted with 💻 by the Explorer | Tech Enthusiast | PS4 Modder</p>
     </footer>
-
-    <script>
-        let score = 0;
-        let timeLeft = 30;
-        let gameInterval;
-        let box = document.getElementById('box');
-        let gameContainer = document.getElementById('game-container');
-        let scoreDisplay = document.getElementById('score');
-        let timeDisplay = document.getElementById('time');
-        let startButton = document.getElementById('start-btn');
-
-        // Function to set random position of the box inside the container
-        function randomPosition() {
-            const containerRect = gameContainer.getBoundingClientRect();
-            const boxSize = box.getBoundingClientRect().width;
-
-            const maxX = containerRect.width - boxSize;
-            const maxY = containerRect.height - boxSize;
-
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-
-            box.style.left = `${randomX}px`;
-            box.style.top = `${randomY}px`;
-        }
-
-        // Function to update the score
-        function updateScore() {
-            score++;
-            scoreDisplay.innerText = score;
-
-            // Play the explosion animation
-            box.style.animation = 'explode 0.5s forwards';
-
-            // Reset the box position after the explosion animation ends
-            setTimeout(() => {
-                box.style.animation = '';  // Clear the animation
-                randomPosition();  // Move box to a new position
-            }, 500);
-        }
-
-        // Function to handle countdown timer
-        function countdown() {
-            timeLeft--;
-            timeDisplay.innerText = timeLeft;
-
-            if (timeLeft <= 0) {
-                clearInterval(gameInterval);
-                box.removeEventListener('click', updateScore);
-                startButton.disabled = false;
-                startButton.innerText = 'Restart Game';
-                alert(`Time's up! Your final score is: ${score}`);
-            }
-        }
-
-        // Function to start the game
-        function startGame() {
-            score = 0;
-            timeLeft = 30;
-            scoreDisplay.innerText = score;
-            timeDisplay.innerText = timeLeft;
-            startButton.disabled = true;
-            startButton.innerText = 'Game in Progress';
-
-            box.addEventListener('click', updateScore);
-            gameInterval = setInterval(() => {
-                randomPosition();
-                countdown();
-            }, 1000);
-        }
-
-        // Add event listener to start button
-        startButton.addEventListener('click', startGame);
-    </script>
 
 </body>
 </html>
-
-
