@@ -74,6 +74,18 @@
             background-color: #ff6347;
         }
 
+        /* Explosion animation */
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
         /* Scoreboard styling */
         .scoreboard {
             display: flex;
@@ -172,6 +184,15 @@
         function updateScore() {
             score++;
             scoreDisplay.innerText = score;
+
+            // Play the explosion animation
+            box.style.animation = 'explode 0.5s forwards';
+
+            // Reset the box position after the explosion animation ends
+            setTimeout(() => {
+                box.style.animation = '';  // Clear the animation
+                randomPosition();  // Move box to a new position
+            }, 500);
         }
 
         // Function to handle countdown timer
@@ -210,4 +231,5 @@
 
 </body>
 </html>
+
 
